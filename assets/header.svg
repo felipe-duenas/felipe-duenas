@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+<defs>
+<pattern id="d" x="5" y="3" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#1d4f57" fill-opacity=".12"/></pattern>
+<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="ln" x1="0" x2="1"><stop offset="0" stop-color="#1d4f57"/><stop offset="1" stop-color="#1d4f57" stop-opacity="0"/></linearGradient>
+<g id="box"><rect x="-24" y="-24" width="48" height="48" rx="12" fill="#fff" stroke="#1d4f57" stroke-width="1.5"/></g>
+</defs>
+<rect x="1" y="1" width="1198" height="298" rx="16" fill="#fff" stroke="#e3e7ea" stroke-width="1.5"/>
+<rect x="1" y="1" width="1198" height="298" rx="16" fill="url(#d)"/>
+<rect x="2" y="2" width="760" height="296" rx="15" fill="url(#fade)"/>
+
+<!-- Texto: misma etiqueta de sección que el sitio web -->
+<g font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<rect x="70" y="82" width="2" height="15" fill="#1d4f57"/>
+<text x="82" y="94" font-family="'JetBrains Mono',SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace" font-size="12" fill="#1d4f57" letter-spacing=".6">01</text>
+<text x="106" y="94" font-size="12" fill="#5b6670" letter-spacing="1.7">/  PERFIL</text>
+<rect x="186" y="89" width="300" height="1" fill="url(#ln)"/>
+<text x="66" y="166" font-size="68" font-weight="700" fill="#16191c" letter-spacing="-1.4">Felipe Dueñas</text>
+<rect x="70" y="186" width="232" height="32" rx="16" fill="#edf3f3"/>
+<text x="186" y="207" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1d4f57" letter-spacing="1.6">INGENIERO DE SOFTWARE</text>
+</g>
+
+<!-- Flujo: cliente → API gateway → réplicas del servicio → base de datos (simétrico respecto a y = 150) -->
+<g fill="none" stroke="#1d4f57" stroke-opacity=".3" stroke-width="1.5">
+<path d="M716 150H846"/>
+<path d="M846 150L976 80M846 150H976M846 150L976 220"/>
+<path d="M976 80L1106 150M976 150H1106M976 220L1106 150"/>
+</g>
+<!-- Peticiones repartidas por turnos (round robin) entre las réplicas -->
+<g fill="#1d4f57">
+<circle r="3.5" opacity="0"><animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" path="M716 150H846L976 80L1106 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.06;.94;1" dur="3.6s" begin="0s" repeatCount="indefinite"/></circle>
+<circle r="3.5" opacity="0"><animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite" path="M716 150H1106"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.06;.94;1" dur="3.6s" begin="1.2s" repeatCount="indefinite"/></circle>
+<circle r="3.5" opacity="0"><animateMotion dur="3.6s" begin="2.4s" repeatCount="indefinite" path="M716 150H846L976 220L1106 150"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.06;.94;1" dur="3.6s" begin="2.4s" repeatCount="indefinite"/></circle>
+</g>
+<g fill="none" stroke="#1d4f57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<!-- cliente -->
+<g transform="translate(716 150)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></g></g>
+<!-- API gateway -->
+<g transform="translate(846 150)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></g>
+<!-- réplicas del servicio -->
+<g transform="translate(976 80)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></g></g>
+<g transform="translate(976 150)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></g></g>
+<g transform="translate(976 220)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></g></g>
+<!-- base de datos -->
+<g transform="translate(1106 150)"><use href="#box"/><g transform="translate(-11 -11) scale(.9167)"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></g></g>
+</g>
+
+</svg>
